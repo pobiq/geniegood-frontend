@@ -13,6 +13,7 @@ import { useAuthStore } from "../stores/authStore";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import Toast from "../components/common/Toast";
+import { getImageUrl } from "../utils/pathUtils";
 
 export default function SelectGoodsPage() {
   const navigate = useNavigate();
@@ -398,7 +399,7 @@ export default function SelectGoodsPage() {
                     {/* 이미지 */}
                     <div className="w-full h-full flex items-center justify-center p-6">
                       <img
-                        src={design.image}
+                        src={getImageUrl(design.image)}
                         alt={`시안 ${design.id}`}
                         className="max-w-full max-h-full object-contain"
                       />
