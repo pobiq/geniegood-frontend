@@ -7,7 +7,10 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { selectGoodsData, selectGoodsDetail } from "../services/goodsService";
-import { useAuthStore } from "../stores/authStore";
+import { getImageUrl } from "../utils/pathUtils";
+
+import {
+ useAuthStore } from "../stores/authStore";
 
 const categories = [
   { id: 0, name: "전체" },
@@ -154,7 +157,7 @@ export default function BrowsePage() {
               {/* 이미지 */}
               <div className="relative w-full h-[367px] bg-gray-100">
                 <img
-                  src={good.goodsUrl}
+                  src={getImageUrl(good.goodsUrl)}
                   alt={`굿즈 이미지`}
                   className="w-full h-full object-cover"
                 />
@@ -196,7 +199,7 @@ export default function BrowsePage() {
               {/* 왼쪽: 굿즈 이미지 */}
               <div className="w-1/2 bg-gray-100 flex-shrink-0 relative">
                 <img
-                  src={selectedGoods.goodsUrl}
+                  src={getImageUrl(selectedGoods.goodsUrl)}
                   alt={selectedGoods.categoryKoreanName}
                   className="w-full h-full object-cover"
                 />

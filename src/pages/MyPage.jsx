@@ -16,6 +16,7 @@ import LoadingSpinner from "../components/common/LoadingSpinner";
 import Toast from "../components/common/Toast";
 import { selectRecentOrder } from "../services/orderService";
 import { useAuthStore } from "../stores/authStore";
+import { getImageUrl } from "../utils/pathUtils";
 
 export default function MyPage() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function MyPage() {
   const { user, setUser } = useAuthStore();
   const [nickname, setNickname] = useState(user?.nickname || "");
   const [profileImage, setProfileImage] = useState(
-    user?.profileUrl || defaultProfileIcon,
+    getImageUrl(user?.profileUrl) || defaultProfileIcon,
   );
   const [isUploading, setIsUploading] = useState(false);
   const [isNicknameAvailable, setIsNicknameAvailable] = useState(false);
@@ -43,7 +44,7 @@ export default function MyPage() {
         setNickname(user.nickname);
       }
       if (user.profileUrl) {
-        setProfileImage(user.profileUrl);
+        setProfileImage(getImageUrl(user.profileUrl));
       } else {
         setProfileImage(defaultProfileIcon);
       }
@@ -628,7 +629,7 @@ export default function MyPage() {
                       {/* 주문 이미지 */}
                       <div className="w-20 h-20 rounded-[10px] overflow-hidden bg-gray-100 shrink-0">
                         <img
-                          src={order.goodsUrl}
+                          src={getImageUrl(order.goodsUrl)}
                           alt="주문 이미지"
                           className="w-full h-full object-cover"
                         />

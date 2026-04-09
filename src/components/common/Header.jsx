@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import defaultProfileIcon from "../../assets/img/defaultProfileIcon.png";
 import { logout } from "../../services/authService";
 import { useAuthStore } from "../../stores/authStore";
+import { getImageUrl } from "../../utils/pathUtils";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -133,7 +134,7 @@ export default function Header() {
               {/* 프로필 이미지 또는 이니셜 */}
               <div className="relative">
                 <img
-                  src={user.profileUrl ? user.profileUrl : defaultProfileIcon}
+                  src={getImageUrl(user.profileUrl ? user.profileUrl : defaultProfileIcon)}
                   alt={user.nickname || "default"}
                   className="rounded-full w-9 h-9 object-cover shadow-md cursor-pointer"
                   onClick={handleProfileClick}
@@ -154,11 +155,11 @@ export default function Header() {
                       <div className="flex flex-col items-center gap-3">
                         <div className="relative">
                           <img
-                            src={
+                            src={getImageUrl(
                               user.profileUrl
                                 ? user.profileUrl
-                                : defaultProfileIcon
-                            }
+                                : defaultProfileIcon,
+                            )}
                             alt={user.nickname || "default"}
                             className="rounded-full w-16 h-16 object-cover shadow-lg ring-2 ring-white"
                           />

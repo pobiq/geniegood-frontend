@@ -8,6 +8,7 @@ import {
   selectOrderDetail,
   updateOrderAddress,
 } from "../services/orderService";
+import { getImageUrl } from "../utils/pathUtils";
 
 const SHIPPING_FEE = 3000;
 
@@ -203,7 +204,7 @@ export default function OrderDetailPage() {
                   {/* 상품 이미지 */}
                   <div className="w-24 h-24 rounded-[10px] overflow-hidden bg-gray-100 shrink-0">
                     <img
-                      src={item.goodsUrl || ""}
+                      src={getImageUrl(item.goodsUrl || "")}
                       alt={item.categoryKoreanName}
                       className="w-full h-full object-cover"
                     />

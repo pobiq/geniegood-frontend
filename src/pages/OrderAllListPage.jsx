@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import Toast from "../components/common/Toast";
 import { cancelOrder, selectAllOrders } from "../services/orderService";
+import { getImageUrl } from "../utils/pathUtils";
 
 export default function OrderAllListPage() {
   const navigate = useNavigate();
@@ -278,7 +279,7 @@ export default function OrderAllListPage() {
                       <div className="w-20 h-20 rounded-[10px] overflow-hidden bg-gray-100 shrink-0">
                         {orderImage ? (
                           <img
-                            src={orderImage || ""}
+                            src={getImageUrl(orderImage)}
                             alt={orderTitle}
                             className="w-full h-full object-cover"
                           />
